@@ -39,8 +39,10 @@
     background-color: aqua;
 }
 .anadeta{
-    display: grid;
-   grid-template-columns: auto auto auto;
+    /* display: grid;
+   grid-template-columns: auto auto auto; */
+   display: flex;
+   justify-content: space-evenly;
     padding: 3rem;
    
     color: white;

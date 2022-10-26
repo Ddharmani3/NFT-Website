@@ -19,7 +19,7 @@ function Analytics(props) {
  const [trans, setTrans] = useState([]);
  const [det, setDet] = useState([]);
  const [reg, setReg] = useState([]);
- const [pri, setPri] = useState();
+ const [pri, setPri] = useState([]);
  const [isLoading, setisLoading] = useState(true);
  
  
@@ -39,7 +39,7 @@ function Analytics(props) {
       setPri([nft]);
       
       
-      console.log("pri",pri)
+      // console.log("pri",pri)
   }
 
 
@@ -94,28 +94,36 @@ function Analytics(props) {
     .catch(err => console.error(err));
     var last= Object.values(arr[trans.length])[1];
     console.log("last",[new Date(m),last,reg[0]*(m)+reg[1]])
-    // arr=[[new Date(m),last,0],reg[0]*(m)+reg[1]]
-    // arr=[[new Date(y),last,0],reg[0]*(y)+reg[1]]
+    arr=[[new Date(m),last,reg[0]*(m)+reg[1]],...arr]
+    arr=[[new Date(y),last,reg[0]*(y)+reg[1]],...arr]
     
     setTrans([...trans, ...arr]);
-    console.log(trans)
+    console.log("ar",arr)
     setDet(nftdet)
   }
   
  
   useEffect(() => {
-    // setisLoading(true);
-    fetchml();
-    fetchnft();
-    setisLoading(false);
-    fetchnfttransfer();
     
-
+    fetchnft();
+    
   },[]);
-
-
+  
   useEffect(() => {
-    console.log(trans)
+    console.log(pri)
+    if (pri.length) {
+      
+      fetchml();
+      setisLoading(false)
+    }
+  }, [pri]);
+  useEffect(() => {
+    console.log(reg)
+    if (reg.length) {
+      
+      fetchnfttransfer();
+      setisLoading(false)
+    }
   }, [reg]);
 
   
@@ -151,9 +159,8 @@ function Analytics(props) {
             <h3 style={{ "paddingTop": "1rem" ,color:"whitesmoke"}}>{det.name}</h3>
             <h5>Contract Address:</h5>
             <h6 style={{ "fontSize": "0.7rem" }}>{det.contract}</h6>
-            {/* {console.log("bello",pri)} */}
-            {/* {pri.floorAsk&&
-            <h5>price: {pri.floorAsk.price.amount.usd} USD( {pri.floorAsk.price.amount.native} {pri.floorAsk.price.currency.symbol} )</h5>} */}
+            {console.log("bello",pri)}
+            {/* {pri.floorAsk&&<h5>price: {pri.floorAsk.price.amount.usd} USD( {pri.floorAsk.price.amount.native} {pri.floorAsk.price.currency.symbol} )</h5>} */}
           </div>
 
         </div>
@@ -184,10 +191,10 @@ function Analytics(props) {
         </div>
       </div>
       <div className="nftanalysis">
-        <h3>Analysis</h3>
+        <h3 style={{"marginLeft":"3rem","marginTop":"1rem"}}>Analysis</h3>
         <div className="anadeta">
           {/* {pri.topBid&&<div className="rarity"> Top Bid: &nbsp; {pri.topBid.price.amount.usd} USD( {pri.topBid.price.amount.native} {pri.topBid.price.currency.symbol} )</div>} */}
-          <div className="priceaft">Price after 1 month:{reg[0]*(m)+reg[1]}  ETH</div>
+          <div className="priceaft">Price after 1 month: {reg[0]*(m)+reg[1]}  ETH</div>
           <div className="priceaft">Price after 1 Year: {reg[0]*(y)+reg[1]} ETH</div>
         </div>
 
