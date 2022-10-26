@@ -112,6 +112,8 @@ function Analytics(props) {
     
 
   },[]);
+
+
   useEffect(() => {
     console.log(trans)
   }, [reg]);
@@ -146,7 +148,7 @@ function Analytics(props) {
             <img className='nftdp'  src={det.image} alt="" />
           </div>
           <div className="nftpdet">
-            <h3 style={{ "paddingTop": "1rem" }}>{det.name}</h3>
+            <h3 style={{ "paddingTop": "1rem" ,color:"whitesmoke"}}>{det.name}</h3>
             <h5>Contract Address:</h5>
             <h6 style={{ "fontSize": "0.7rem" }}>{det.contract}</h6>
             {/* {console.log("bello",pri)} */}

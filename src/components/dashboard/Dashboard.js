@@ -191,7 +191,7 @@ function Dashboard() {
           <div className="scard" id='sc3'>
           <div className="carddet">
             <h3>Growth</h3>
-            <p className='cardval3' style={{color:"#39FF14"}}>150%</p>
+            <p className='cardval3' style={{color:"#39FF14"}}>144%</p>
             </div>
             <div className="svg">
             <svg width={"9rem"} height={"9rem"} style={{ "position": "relative", left: "2.7rem", bottom: "1.1rem" }} fill="rgba(0, 0, 0, 0.22)" version="1.1" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -267,7 +267,7 @@ function Dashboard() {
           <div className="scard" id='sc4'>
           <div className="carddet">
             <h3>Investment</h3>
-            <p className='cardval3' >10 ETH</p>
+            <p className='cardval3' >5 ETH</p>
             </div>
             <div className="svg">
 
@@ -294,7 +294,7 @@ function Dashboard() {
                 <div className="dtagsr2">
 
                   <div className="elliptag" id='et4'>Fav Category: Collectibles</div>
-                  <div className="elliptag" id='et5'>Invested: 10 ETH</div>
+                  <div className="elliptag" id='et5'>Invested: 5 ETH</div>
                 </div>
               </div>
 
@@ -312,12 +312,12 @@ function Dashboard() {
 
                 <Chart
                   chartType="PieChart"
-                  data={[["Year", "NFT"], ["DeadFellaz #3564", 1.01], ["Cool Cat #1639", 3.25], ["Pudgy Penguin #2592", 2.85],["Clayling #1335",0.079]]}
+                  data={[["Year", "NFT"], ["DeadFellaz #3564", 1.01], ["Cool Cat #1639", 3.25], ["Pudgy Penguin #2592", 2.85],["Clayling #1335",0.079],["others",0]]}
                   width="20rem"
                   height="20rem"
                   style={{ position: "relative", bottom: "1.5rem", right: "1.5rem" }}
                   
-                  options={{ legend: { position: "none" }, pieHole: 0.4, "backgroundColor": "none", "colors": ["#D672AB", "#39E27D", "#F68A5C", "aqua"],animation: {
+                  options={{ legend: { position: "none" }, pieHole: 0.4, "backgroundColor": "none", "colors": ["#D672AB", "#39E27D", "#F68A5C", "aqua","burlywood"],animation: {
                     startup: true,
                     easing: "linear",
                     duration: 500,
@@ -333,6 +333,7 @@ function Dashboard() {
                 <h6><div className="clr" id='yclr'></div>Cool Cat #1639</h6>
                 <h6><div className="clr" id='rclr'></div>Pudgy Penguin #2592</h6>
                 <h6><div className="clr" id='gclr'></div>Clayling #1335</h6>
+                <h6><div className="clr" id='byclr'></div>others</h6>
               </div>
             </div>
           </div>
@@ -373,10 +374,16 @@ function Dashboard() {
 
               <Chart
                 chartType="LineChart"
-                data={[["Transaction Date", "NFT1","NFT 2","nft3","nft4"], ...trans]}
+                data={[["Transaction Date", "Cool Cat #1639","Pudgy Penguin #2592","Clayling #1335","DeadFellaz #3564"], ...trans]}
                 width="100%"
                 height="100%"
-                options={{ legend: { position: "bottom" }, "backgroundColor": "#152846", "colors": ["#D672AB","#39E27D","#F68A5C","aqua"], animation: {
+                options={{ legend: { position: "bottom", textStyle: {
+                  color: 'white',
+                  fontSize: 12}, strokeColor: {color: 'white'} },hAxis: {
+                    textStyle:{color: '#FFF'}
+                }, vAxis:{
+                  textStyle:{color: '#FFF'}
+              }, "backgroundColor": "#152846", "colors": ["#D672AB","#39E27D","#F68A5C","aqua"], animation: {
                   startup: true,
                   easing: "linear",
                   duration: 1000,
